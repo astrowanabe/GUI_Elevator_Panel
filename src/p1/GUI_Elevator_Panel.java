@@ -44,16 +44,11 @@ public class GUI_Elevator_Panel extends Application{
         GridPane gridPane = new GridPane();         //overall grid to hold everything
         Pane pane1 = new VBox(5);                   //left hand column of buttons (odds)
         Pane pane2 = new VBox(5);                   //right hand column of buttons (evens)
-        //Pane pane3 = new HBox(2);                   //bottom row of buttons (TEST / CLEAR)
-        //pane1.setPadding(new Insets(20,10,10,20));  //insets for left hand column
-        //pane2.setPadding(new Insets(20,20,10,10));  //insets for right hand column
-        gridPane.setPadding(new Insets(20,20,20,20));
-        gridPane.setHgap(10);
-        gridPane.setVgap(10);
-        //pane3.setPadding(new Insets(10,20,20,20));  //insets for bottom row
-        gridPane.add(pane1,0,0);    //add pane to grid
-        gridPane.add(pane2,1,0);    //add pane to grid
-        //gridPane.add(pane3,0,1);    //add pane to grid
+        gridPane.setPadding(new Insets(20,20,20,20));   //set insets
+        gridPane.setHgap(10);           //horizontal gap between elements
+        gridPane.setVgap(10);           //vertical gap between elements
+        gridPane.add(pane1,0,0);        //add pane to grid
+        gridPane.add(pane2,1,0);        //add pane to grid
 
         /* place buttons in left hand column (odds) */
         for (int i = numOfButtons - 1; i >= 0; i--) {
@@ -85,18 +80,16 @@ public class GUI_Elevator_Panel extends Application{
             buttonsArray2[i].setOnAction(ButtonHandler2);
         }
 
-        /* place buttons in the bottom row (TEST / CLEAR) */
+        /* place buttons in the bottom row (TEST / CLEAR) and set action handler */
         Button test = new Button("TEST");
         test.setPrefWidth(100);
         test.setStyle("-fx-font: 22 arial; -fx-base: LightGray");
-        //pane3.getChildren().add(0,test);
         test.setPrefWidth(120);
         gridPane.add(test,0,1);
         test.setOnAction(ButtonHandler3);
         Button clear = new Button("CLEAR");
         clear.setPrefWidth(100);
         clear.setStyle("-fx-font: 22 arial; -fx-base: LightGray");
-        //pane3.getChildren().add(1,clear);
         clear.setPrefWidth(120);
         gridPane.add(clear,1,1);
         clear.setOnAction(ButtonHandler3);
@@ -133,7 +126,7 @@ public class GUI_Elevator_Panel extends Application{
         // Identify the object that caused the event
         Button b = (Button)e.getSource();
 
-        if(b.getText() == "TEST") {     //button TEST pressed
+        if(b.getText().equals("TEST")) {     //button TEST pressed
             for(int i = numOfButtons - 1; i >= 0; i--){
                 buttonsArray1[i].setStyle("-fx-font: 22 arial; -fx-base: Orange");
                 buttonsArray2[i].setStyle("-fx-font: 22 arial; -fx-base: Orange");
